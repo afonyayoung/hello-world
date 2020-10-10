@@ -1,0 +1,10 @@
+project_id      = "my-day01-project"
+us_region       = "us-central1"
+us_zone         = "us-central1-c"
+eu_region       = "europe-west1"
+eu_zone         = "europe-west1-b"
+network_name    = "default"
+ssh_username    = "ansible"
+ssh_key         = "~/.ssh/id_rsa.pub"
+ansible_startup = "ansible.sh"
+ports           = ["22", "80", "8080"]

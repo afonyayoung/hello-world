@@ -1,0 +1,51 @@
+- hosts: localhost
+  connection: local
+  vars:
+    pull_user: ansible
+
+  roles:
+    - role: user
+      vars:
+        user: "{{ pull_user }}"
+        system_user: yes
+
+  tasks:
+    - include: ansible-pull-cron.yml
+      vars:
+        user: "{{ pull_user }}"
+
+    - name: Install httpd
+      become: yes
+      yum: 
+        name: httpd
+      tags:
+        - httpd
+        
+    - name: check httpd start and enabled
+      become: yes
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+      tags:
+        - httpd
+
+
+
+    - name: Install tomcat
+      become: yes
+      yum: 
+        name: tomcat
+      tags:
+        - tomcat      
+
+    - name: check tomcat started and enabled
+      become: yes
+      systemd:
+        name: tomcat
+        state: started
+        enabled: yes
+      tags:
+        - tomcat
+
+
