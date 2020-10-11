@@ -46,7 +46,9 @@
       yum: 
         name: tomcat
       tags:
-        - tomcat      
+        - tomcat 
+        - tomcat-webapps
+        - tomcat-admin-webapps     
 
     - name: check tomcat started and enabled
       become: yes
