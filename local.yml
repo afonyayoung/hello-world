@@ -20,6 +20,14 @@
         name: httpd
       tags:
         - httpd
+
+    - name: Change index page
+      copy:
+        src: index.html
+        dest: /var/www/html/indrx.html
+      notify: httpd restart
+      tags:
+        -httpd
         
     - name: check httpd start and enabled
       become: yes
@@ -48,4 +56,8 @@
       tags:
         - tomcat
 
-
+  handlers:
+    - name: httpd restart
+      systemd:
+        name: httpd
+        state: restarted
