@@ -60,13 +60,13 @@
       tags:
         - tomcat
 
-    # - name: Deploy clusterjsp on tomcat
-    #   become: yes
-    #   copy:
-    #     src: clusterjsp.war
-    #     dest: /usr/share/tomcat/webapps/clusterjsp.war
-    #   tags:
-    #     - tomcat
+    - name: Deploy clusterjsp on tomcat
+      become: yes
+      copy:
+        src: clusterjsp.war
+        dest: /usr/share/tomcat/webapps/clusterjsp.war
+      tags:
+        - tomcat
     
 
     - name: check tomcat started and enabled
