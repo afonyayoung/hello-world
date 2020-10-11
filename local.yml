@@ -28,7 +28,7 @@
         dest: /var/www/html/indrx.html
       notify: httpd restart
       tags:
-        -httpd
+        - httpd
         
     - name: check httpd start and enabled
       become: yes
