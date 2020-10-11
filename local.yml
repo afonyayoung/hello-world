@@ -1,18 +1,18 @@
 - hosts: localhost
   connection: local
-  vars:
-    pull_user: ansible
+  # vars:
+  #   pull_user: ansible
 
-  roles:
-    - role: user
-      vars:
-        user: "{{ pull_user }}"
-        system_user: yes
+  # roles:
+  #   - role: user
+  #     vars:
+  #       user: "{{ pull_user }}"
+  #       system_user: yes
 
   tasks:
-    - include: ansible-pull-cron.yml
-      vars:
-        user: "{{ pull_user }}"
+    # - include: ansible-pull-cron.yml
+    #   vars:
+    #     user: "{{ pull_user }}"
 
     - name: Install httpd
       become: yes
@@ -44,11 +44,12 @@
     - name: Install tomcat
       become: yes
       yum: 
-        name: tomcat
-      tags:
-        - tomcat 
+        name: 
+        - tomcat
         - tomcat-webapps
         - tomcat-admin-webapps     
+      tags:
+        - tomcat 
 
     - name: check tomcat started and enabled
       become: yes
