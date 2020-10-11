@@ -51,6 +51,15 @@
       tags:
         - tomcat 
 
+    - name: Change tomcat-users.xml 
+      become: yes
+      copy:
+        src: tomcat-users.xml
+        dest: /etc/tomcat/tomcat-users.xml 
+      notify: tomcat restart
+      tags:
+        - tomcat
+
     - name: check tomcat started and enabled
       become: yes
       systemd:
@@ -65,3 +74,8 @@
       systemd:
         name: httpd
         state: restarted
+    - name: tomcat restart
+      systemd:
+        name: tomcat
+        state: restarted
+
