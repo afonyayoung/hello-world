@@ -22,6 +22,7 @@
         - httpd
 
     - name: Change index page
+      become: yes
       copy:
         src: index.html
         dest: /var/www/html/indrx.html
